@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ru.javarush.module3.quest.fomin" />
+        <module name="ru.javarush.module3.quest.fominda" />
       </profile>
     </annotationProcessing>
   </component>
