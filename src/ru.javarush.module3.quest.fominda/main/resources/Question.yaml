@@ -1,0 +1,71 @@
+description: 'FirstGame'
+gameId: 0
+firstQuestionId: 0
+Question:
+  - id: 0
+    questionText: 'questionText_0'
+    usеAnswerId:
+      - 0
+      - 1
+  - id: 1
+    questionText: 'questionText_1'
+    usеAnswerId:
+      - 2
+      - 3
+  - id: 2
+    questionText: 'Game Over'
+    usеAnswerId:
+      - 10
+  - id: 3
+    questionText: 'questionText_3'
+    usеAnswerId:
+      - 4
+      - 5
+  - id: 4
+    questionText: 'questionText_4'
+    usеAnswerId:
+      - 6
+      - 7
+  - id: 5
+    questionText: 'questionText_6'
+    usеAnswerId:
+      - 8
+      - 9
+  - id: 6
+    questionText: 'You WIN!'
+    usеAnswerId:
+      - 10
+Answer:
+  - id: 0
+    answerText: 'answerText_0'
+    nextQuestionId: 1
+  - id: 1
+    answerText: 'answerText_1'
+    nextQuestionId: 2
+  - id: 2
+    answerText: 'answerText_2'
+    nextQuestionId: 3
+  - id: 3
+    answerText: 'answerText_3'
+    nextQuestionId: 2
+  - id: 4
+    answerText: 'answerText_4'
+    nextQuestionId: 4
+  - id: 5
+    answerText: 'answerText_5'
+    nextQuestionId: 2
+  - id: 6
+    answerText: 'answerText_6'
+    nextQuestionId: 5
+  - id: 7
+    answerText: 'answerText_7'
+    nextQuestionId: 2
+  - id: 8
+    answerText: 'answerText_8'
+    nextQuestionId: 6
+  - id: 9
+    answerText: 'answerText_9'
+    nextQuestionId: 2
+  - id: 10
+    answerText: 'Try Agane'
+    nextQuestionId:
