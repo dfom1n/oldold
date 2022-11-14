@@ -1,19 +1,22 @@
 package services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import model.Answer;
 import model.Question;
 import reposytory.AnswerRepository;
 import reposytory.QuestionRepository;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class Settings {
-    
-    public static final String INIT_FILE_SETTINGS = "resources/Settings.yaml";
+
+    public static final String INIT_FILE_SETTINGS = "Settings.yaml";
 
     private static volatile Settings SETTINGS;
     private String description;
@@ -22,8 +25,16 @@ public class Settings {
     private List<Question> creaturesQuestions;
 
     private List<Answer> creaturesAnswer;
+//
+//    private List<Long> creaturesQuestionsID;
 
 
+//    public Settings(String description, Long gameId, Long firstQuestionId, List<Question> creaturesQuestions) {
+//        this.description = description;
+//        this.gameId = gameId;
+//        this.firstQuestionId = firstQuestionId;
+//        this.creaturesQuestions = creaturesQuestions;
+//    }
 
     public Settings() {
         try {
@@ -33,14 +44,14 @@ public class Settings {
                 objectReader.readValue(resource.openStream());
             }
         } catch (IOException e) {
-            //TODO Coding. System.out here? Need move the output to View layer
             System.out.printf("Ошибка при чтении файла настроек init.yml: %s", e);
         }
     }
 
+
     public QuestionRepository getCreaturesQuestionRepository() {
         QuestionRepository creaturesQuestionRepository = null;
-        if (creaturesQuestions != null){
+        if (creaturesQuestions != null) {
             creaturesQuestionRepository = new QuestionRepository(creaturesQuestions);
         }
         return creaturesQuestionRepository;
@@ -48,7 +59,7 @@ public class Settings {
 
     public AnswerRepository getCreaturesAnswerRepository() {
         AnswerRepository creatureAnswerRepository = null;
-        if (creaturesQuestions != null){
+        if (creaturesQuestions != null) {
             creatureAnswerRepository = new AnswerRepository(creaturesAnswer);
         }
         return creatureAnswerRepository;
@@ -84,8 +95,8 @@ public class Settings {
                 }
             }
         }
-
         return settings;
     }
 }
+
 
