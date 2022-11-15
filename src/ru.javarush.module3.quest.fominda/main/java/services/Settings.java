@@ -1,5 +1,6 @@
 package services;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -25,21 +26,12 @@ public class Settings {
     private List<Question> creaturesQuestions;
 
     private List<Answer> creaturesAnswer;
-//
-//    private List<Long> creaturesQuestionsID;
 
-
-//    public Settings(String description, Long gameId, Long firstQuestionId, List<Question> creaturesQuestions) {
-//        this.description = description;
-//        this.gameId = gameId;
-//        this.firstQuestionId = firstQuestionId;
-//        this.creaturesQuestions = creaturesQuestions;
-//    }
 
     public Settings() {
         try {
             URL resource = Settings.class.getClassLoader().getResource(INIT_FILE_SETTINGS);
-            ObjectReader objectReader = new YAMLMapper().readerForUpdating(this);
+            ObjectReader objectReader = new YAMLMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).readerForUpdating(this);
             if (Objects.nonNull(resource)) {
                 objectReader.readValue(resource.openStream());
             }

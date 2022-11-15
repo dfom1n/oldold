@@ -13,6 +13,8 @@ public class Answer {
         this.nextQuestionId = nextQuestionId;
     }
 
+    public Answer(){}
+
     public Long getId() {
         return id;
     }

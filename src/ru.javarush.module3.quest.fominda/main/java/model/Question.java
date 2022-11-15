@@ -13,15 +13,19 @@ public class Question {
         this.usеAnswerId = usеAnswerId;
     }
 
+    public Question(){}
+
     public Long getId() {
         return id;
     }
 
-    public String getAnswerText() {
+    public String getQuestionText() {
         return questionText;
     }
 
     public List<Long> getUsеAnswerId() {
         return usеAnswerId;
     }
+
+
 }
