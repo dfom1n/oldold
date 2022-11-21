@@ -12,12 +12,13 @@ import reposytory.QuestionRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
 
 public class Settings {
 
-    public static final String INIT_FILE_SETTINGS = "Settings.yaml";
+//    public static final String INIT_FILE_SETTINGS = "Settings.yaml";
 
     private static volatile Settings SETTINGS;
     private String description;
@@ -27,13 +28,13 @@ public class Settings {
 
     private List<Answer> creaturesAnswer;
 
+    public Settings() {}
 
-    public Settings() {
+    public Settings(InputStream resource) {
         try {
-            URL resource = Settings.class.getClassLoader().getResource(INIT_FILE_SETTINGS);
             ObjectReader objectReader = new YAMLMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).readerForUpdating(this);
             if (Objects.nonNull(resource)) {
-                objectReader.readValue(resource.openStream());
+                objectReader.readValue(resource);
             }
         } catch (IOException e) {
             System.out.printf("Ошибка при чтении файла настроек init.yml: %s", e);
@@ -77,18 +78,18 @@ public class Settings {
         return creaturesAnswer;
     }
 
-    public static Settings get() {
-        Settings settings = SETTINGS;
-
-        if (Objects.isNull(settings)) {
-            synchronized (Settings.class) {
-                if (Objects.isNull(settings = SETTINGS)) {
-                    settings = SETTINGS = new Settings();
-                }
-            }
-        }
-        return settings;
-    }
+//    public static Settings get() {
+//        Settings settings = SETTINGS;
+//
+//        if (Objects.isNull(settings)) {
+//            synchronized (Settings.class) {
+//                if (Objects.isNull(settings = SETTINGS)) {
+//                    settings = SETTINGS = new Settings(Settings.class.getClassLoader().getResourceAsStream("Settings.yaml"));
+//                }
+//            }
+//        }
+//        return settings;
+//    }
 }
 
 

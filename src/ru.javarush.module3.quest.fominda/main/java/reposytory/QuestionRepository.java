@@ -15,7 +15,6 @@ public class QuestionRepository {
         for (Question question : questionList) {
 //            System.out.println("id : " + question.getId() + ", questionText : " + question.getQuestionText() + ", nextQuestionId : " + question.getUsеAnswerId().toString());
             id = question.getId();
-//            System.out.println("id : " + id);
             this.questionMap.put(id, question);
         }
     }

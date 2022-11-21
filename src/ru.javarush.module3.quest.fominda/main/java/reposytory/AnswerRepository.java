@@ -21,11 +21,10 @@ public class AnswerRepository {
 
     public List<Answer> findById(List<Long> ids){
         List<Answer> answers = new ArrayList<>();
-        for (Map.Entry<Long, Answer> longAnswerEntry : answerMap.entrySet()) {
-            for (Long id : ids) {
-                System.out.println("id : " + id);
-                if(longAnswerEntry.getKey() == id){
-                    answers.add((Answer) longAnswerEntry);
+        for (Long id : ids) {
+            for (Map.Entry<Long, Answer> answerEntry : answerMap.entrySet()) {
+                if (answerEntry.getKey() == id){
+                    answers.add(answerEntry.getValue());
                 }
             }
         }

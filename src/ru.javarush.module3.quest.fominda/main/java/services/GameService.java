@@ -6,6 +6,7 @@ import reposytory.AnswerRepository;
 import reposytory.QuestionRepository;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GameService {
     private QuestionRepository questionRepository;
@@ -22,9 +23,16 @@ public class GameService {
         return new StepGame(question, answers);
     }
 
-    public void findNextQuestion(Answer answer){
+    public Answer selectAnswer(StepGame stepGame) {
+        int selectAnswerId = ThreadLocalRandom.current().nextInt(stepGame.getAnswers().size());
+        System.out.println(stepGame.getAnswers().size());
+        Answer selectAnswer = stepGame.getAnswers().get(selectAnswerId);
+        return selectAnswer;
+    }
+
+    public StepGame findNextQuestion(Answer answer){
         Long nextQuestionId = answer.getNextQuestionId();
-        findQuestion(nextQuestionId);
+        return findQuestion(nextQuestionId);
     }
 
 
